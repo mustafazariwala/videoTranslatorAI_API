@@ -32,7 +32,7 @@ app.use(express.json());
 app.use('/uploads',express.static(path.join(__dirname, "uploads")));
 
 // Import Routes from different folders
-app.use('/', require('./routes/index'))
+app.use('/api', require('./routes/index'))
 
 app.use('/health', (req, res) => {
   res.status(200).send('Healthy')

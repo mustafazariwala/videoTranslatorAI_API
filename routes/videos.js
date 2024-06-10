@@ -11,6 +11,7 @@ router.get('/', authMiddleware, async function(req, res) {
     let videos = await findVideos(req);
     res.status(200).send(videos);
   } catch (error) {
+    console.log(error)
     res.status(500).send(error);
   }
 });
