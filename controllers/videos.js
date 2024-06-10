@@ -3,11 +3,7 @@ const client = require('../utils/databasepg');
 exports.findVideos = async (req) => {
   try {
     let query = await client.query('select * from videos where user_id = $1', [req.user.id]);
-    if (query.rows.length > 0) {
-      return query.rows;
-    } else {
-      throw new Error('No videos found');
-    }
+    return query.rows || [];
   } catch (error) {
     throw new Error(error);
   }
