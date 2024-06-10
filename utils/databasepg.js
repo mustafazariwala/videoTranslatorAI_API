@@ -8,7 +8,7 @@ const client = new Client({
   port: process.env.POSTGRES_PORT,
   password: process.env.POSTGRES_PASSWORD,
   database: process.env.POSTGRES_DATABASE,
-  ssl: true
+  ssl: process.env.POSTGRES_SSL
 });
 
 
