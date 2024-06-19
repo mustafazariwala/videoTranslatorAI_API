@@ -12,7 +12,12 @@ var cors = require('cors')
 const client = require('./utils/databasepg');
 const { authMiddleware } = require('./middleware/authMiddleware');
 
-client.connect();
+client.connect().then((res) => {
+  console.log("Connected to the database");
+}).catch((err) => {
+  console.log(err);
+  console.log("Error connecting to the database");
+});
 
 app.use(cors())
 // app.use(bodyParser.json());

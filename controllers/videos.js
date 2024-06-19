@@ -11,9 +11,9 @@ exports.findVideos = async (req) => {
 
 
 
-exports.uploadVideo = async (req) => {
+exports.saveVideo = async (req) => {
   try {
-    let entry = await client.query('insert into videos (filename, filepath, user_id) values ($1, $2, $3)', [req.file.originalname, req.file.path, req.user.id]);
+    let entry = await client.query('insert into videos (filename, filepath, user_id) values ($1, $2, $3)', [req.body.fileName, req.body.path, req.user.id]);
     if (entry.rowCount > 0) {
       return entry.rows;
     } else {
