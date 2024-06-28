@@ -16,7 +16,7 @@ exports.userLoginRequest = async (req) => {
     if(!passwordMatch) {
       throw new Error('Invalid Password');
     }
-    const token = jwt.sign({ email: user.email, id: user.user_id}, 'secret-key', { expiresIn: 600 });
+    const token = jwt.sign({ email: user.email, id: user.user_id}, 'secret-key', { expiresIn: '1h' });
     return {
       message: 'User Login Successful',
       token: token,

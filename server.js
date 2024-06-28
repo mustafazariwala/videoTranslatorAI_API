@@ -1,8 +1,11 @@
 // Add Environment Variables from the .env file to the process 
 require('dotenv').config();
+const initializeApp = require('firebase/app').initializeApp;
 // Creating port value from the environment variable or default value
 const PORT = process.env.PORT || 3000;
 
+const firebaseApp = initializeApp(JSON.parse(process.env.FIREBASE_CONFIG))
+const storage = require('firebase/storage');
 // Initializing express server 
 const express = require("express");
 const path = require("path");
